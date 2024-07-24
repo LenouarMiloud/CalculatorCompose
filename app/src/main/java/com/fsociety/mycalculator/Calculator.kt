@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -48,6 +49,7 @@ fun Calculator(modifier : Modifier = Modifier){
                 maxLines = 5,
                 overflow = TextOverflow.Ellipsis
             )
+            Spacer(modifier = Modifier.weight(1f))
             Text(
                 text = "4134",
                 style = TextStyle(
@@ -70,13 +72,16 @@ fun Calculator(modifier : Modifier = Modifier){
 
 @Composable
 fun ButtonCalculator(btn: String){
-    Box(modifier = Modifier.padding(8.dp)){
+    Box(modifier = Modifier.padding(10.dp)){
         FloatingActionButton(onClick = {  },
             modifier = Modifier.size(100.dp),
             shape = CircleShape,
             contentColor = Color.White,
-            containerColor = Color.Red) {
-            Text(text = btn)
+            containerColor = getColor(btn = btn)) {
+            Text(
+                text = btn,
+                fontSize = 25.sp,
+                fontWeight = FontWeight.Bold)
         }
     }
 }
@@ -86,6 +91,7 @@ fun getColor (btn: String): Color{
         return Color(0xFFF44336)
     if(btn == "(" || btn == ")")
         return Color.Gray
-    if(btn == "/" || btn == "=" || btn == "+" || btn == "-")
-        return Color(0xFF)
+    if(btn == "/" || btn == "=" || btn == "+" || btn == "-" || btn == "*")
+        return Color(0xFFFF9800)
+    return Color(0xFF00C8C9)
 }
