@@ -35,7 +35,7 @@ val buttonList = listOf(
 )
 
 @Composable
-fun Calculator(modifier : Modifier = Modifier){
+fun Calculator(modifier : Modifier = Modifier,viewModel : CalculatorViewModel){
     Box(modifier = Modifier) {
         Column(modifier = modifier
             .fillMaxSize(),
@@ -71,9 +71,9 @@ fun Calculator(modifier : Modifier = Modifier){
 }
 
 @Composable
-fun ButtonCalculator(btn: String){
+fun ButtonCalculator(btn: String,onClick : ()->Unit ){
     Box(modifier = Modifier.padding(10.dp)){
-        FloatingActionButton(onClick = {  },
+        FloatingActionButton(onClick = onClick,
             modifier = Modifier.size(100.dp),
             shape = CircleShape,
             contentColor = Color.White,
